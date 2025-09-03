@@ -1,0 +1,23 @@
+﻿<Window x:Class="ICommandInterfaceApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ICommandInterfaceApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel Margin="10">
+        <!-- Here we have binded the Display Property with the text box so in view model when the result updates, the xaml ui also automatically updates-->
+        <TextBox Width="650" Height="50" FontSize="24" Text="{Binding Result,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        
+        <UniformGrid Columns="4" Margin="90,10,90,40" Height="50">
+            <!--Here we are binding an operation with the button so on click a certain action can be performed and we pass the parameter using Command Parameter-->
+            <Button Content="+" Tag="+" Command="{Binding BtnCmd}" Click="OperationButton_Click"></Button>
+            <Button Content="-" Tag="-" Command="{Binding BtnCmd}" Click="OperationButton_Click"></Button>
+            <Button Content="*" Tag="*" Command="{Binding BtnCmd}" Click="OperationButton_Click"></Button>
+            <Button Content="/" Tag="/" Command="{Binding BtnCmd}" Click="OperationButton_Click"></Button>
+        </UniformGrid>
+        
+        <Label Height ="50" Width="50" Content="{Binding StoredValue}"/>
+    </StackPanel>
+</Window>
